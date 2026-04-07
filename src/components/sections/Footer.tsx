@@ -1,5 +1,5 @@
 import { Camera } from "lucide-react";
-import { Button } from "@/components/ui";
+import { Button, FadeInUp } from "@/components/ui";
 
 export function Footer() {
   return (
@@ -37,15 +37,18 @@ export function Footer() {
 
       {/* Main footer content */}
       <div
-        className="mx-auto"
         style={{
-          maxWidth: "var(--max-content)",
-          padding: "80px var(--space-6)",
+          maxWidth:    "var(--max-content)",
+          marginLeft:  "auto",
+          marginRight: "auto",
+          width:       "100%",
+          padding:     "80px var(--space-6)",
         }}
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--space-16)]">
 
           {/* Column 1: Brand */}
+          <FadeInUp delay={0}>
           <div>
             {/* Logo lockup */}
             <div>
@@ -113,8 +116,10 @@ export function Footer() {
               </a>
             </div>
           </div>
+          </FadeInUp>
 
           {/* Column 2: Hours */}
+          <FadeInUp delay={0.1}>
           <div>
             <p
               style={{
@@ -182,8 +187,10 @@ export function Footer() {
               <p>Closed Mondays</p>
             </div>
           </div>
+          </FadeInUp>
 
           {/* Column 3: Visit Us */}
+          <FadeInUp delay={0.2}>
           <div>
             <p
               style={{
@@ -216,6 +223,7 @@ export function Footer() {
               </Button>
             </div>
           </div>
+          </FadeInUp>
 
         </div>
       </div>
@@ -223,10 +231,13 @@ export function Footer() {
       {/* Bottom bar */}
       <div style={{ borderTop: "1px solid rgba(168, 159, 148, 0.2)" }}>
         <div
-          className="mx-auto flex items-center justify-between"
+          className="flex items-center justify-between"
           style={{
-            maxWidth: "var(--max-content)",
-            padding: "24px var(--space-6)",
+            maxWidth:    "var(--max-content)",
+            marginLeft:  "auto",
+            marginRight: "auto",
+            width:       "100%",
+            padding:     "24px var(--space-6)",
           }}
         >
           <p

@@ -23,8 +23,15 @@ export function SectionWrapper({
       className={className}
     >
       <div
-        className="mx-auto py-[var(--section-padding-mobile)] md:py-[var(--section-padding-desktop)]"
-        style={{ maxWidth: "var(--max-content)" }}
+        className="py-[var(--section-padding-mobile)] md:py-[var(--section-padding-desktop)]"
+        style={{
+          maxWidth:    "var(--max-content)",
+          marginLeft:  "auto",
+          marginRight: "auto",
+          paddingLeft: "24px",
+          paddingRight:"24px",
+          width:       "100%",
+        }}
       >
         {children}
       </div>

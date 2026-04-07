@@ -92,7 +92,7 @@ export function Gallery() {
           }
         }
       `}</style>
-      <div className="px-6 md:px-0">
+      <div>
       {/* Heading */}
       <div style={{ textAlign: "center", marginBottom: "var(--space-12)" }}>
         <FadeInUp>
@@ -147,7 +147,7 @@ export function Gallery() {
               transition: "var(--transition-base)",
             }}
           >
-            <FadeInUp delay={i * 0.1} className="h-full">
+            <FadeInUp delay={Math.min(i * 0.08, 0.5)} className="h-full">
               <div style={{ position: "relative", height: "100%" }}>
                 <Image
                   src={img.src}

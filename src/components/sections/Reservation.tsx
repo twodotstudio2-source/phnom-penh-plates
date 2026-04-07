@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { motion } from "framer-motion";
 import { Send, MapPin, CheckCircle2, Minus, Plus } from "lucide-react";
-import { SectionWrapper, Button } from "@/components/ui";
+import { SectionWrapper, Button, FadeInUp } from "@/components/ui";
 import { submitReservation } from "@/app/actions/reservation";
 
 const schema = z.object({
@@ -131,7 +132,7 @@ export function Reservation() {
         }
       `}</style>
 
-      <div className="px-6 md:px-0">
+      <div>
         {/* Heading */}
         <div style={{ textAlign: "center", marginBottom: "var(--space-16)" }}>
           <p
@@ -164,9 +165,13 @@ export function Reservation() {
         {/* Two-column grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-16)]">
           {/* Left: Form + Telegram CTA */}
+          <FadeInUp delay={0.1}>
           <div>
             {submitted ? (
-              <div
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -198,7 +203,7 @@ export function Reservation() {
                 >
                   We&apos;ll see you at the table.
                 </p>
-              </div>
+              </motion.div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 {/* Name */}
@@ -405,9 +410,16 @@ export function Reservation() {
               </a>
             </div>
           </div>
+          </FadeInUp>
 
           {/* Right: Info column */}
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+            style={{ display: "flex", flexDirection: "column" }}
+          >
             {/* Address */}
             <div>
               <p
@@ -494,7 +506,7 @@ export function Reservation() {
                 BKK1, Phnom Penh
               </span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </SectionWrapper>

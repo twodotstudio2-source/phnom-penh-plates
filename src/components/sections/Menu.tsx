@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SectionWrapper } from "@/components/ui";
+import { SectionWrapper, FadeInUp } from "@/components/ui";
 
 // ── Types ────────────────────────────────────────────────────────
 
@@ -214,7 +214,7 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.07, duration: 0.4, ease: "easeOut" }}
+      transition={{ delay: Math.min(index * 0.05, 0.4), duration: 0.4, ease: "easeOut" }}
     >
       <motion.div
         whileHover={{ y: -2 }}
@@ -298,8 +298,6 @@ export function Menu() {
         @media (max-width: 767px) {
           .menu-tab-list {
             justify-content: flex-start !important;
-            padding-left: 24px;
-            padding-right: 24px;
             -webkit-overflow-scrolling: touch;
           }
           .menu-tab-list::-webkit-scrollbar {
@@ -312,31 +310,35 @@ export function Menu() {
       `}</style>
 
       {/* ── Section heading ────────────────────────────────────── */}
-      <div className="px-6 md:px-0" style={{ textAlign: "center" }}>
-        <p
-          style={{
-            fontFamily:    "var(--font-body)",
-            fontWeight:    "var(--weight-medium)",
-            fontSize:      "12px",
-            letterSpacing: "3px",
-            textTransform: "uppercase",
-            color:         "var(--color-primary)",
-            marginBottom:  "var(--space-4)",
-          }}
-        >
-          The Menu
-        </p>
-        <h2
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: "var(--weight-bold)",
-            fontSize:   "clamp(32px, 4vw, 42px)",
-            lineHeight: "var(--leading-tight)",
-            color:      "#FAF6F0",
-          }}
-        >
-          Every plate. A Khmer story.
-        </h2>
+      <div style={{ textAlign: "center" }}>
+        <FadeInUp delay={0}>
+          <p
+            style={{
+              fontFamily:    "var(--font-body)",
+              fontWeight:    "var(--weight-medium)",
+              fontSize:      "12px",
+              letterSpacing: "3px",
+              textTransform: "uppercase",
+              color:         "var(--color-primary)",
+              marginBottom:  "var(--space-4)",
+            }}
+          >
+            The Menu
+          </p>
+        </FadeInUp>
+        <FadeInUp delay={0.1}>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: "var(--weight-bold)",
+              fontSize:   "clamp(32px, 4vw, 42px)",
+              lineHeight: "var(--leading-tight)",
+              color:      "#FAF6F0",
+            }}
+          >
+            Every plate. A Khmer story.
+          </h2>
+        </FadeInUp>
       </div>
 
       {/* ── Tab navigation ─────────────────────────────────────── */}
@@ -346,6 +348,7 @@ export function Menu() {
        * overflow-x: auto + whitespace: nowrap handles 6 tabs on
        * narrow viewports without wrapping.
        */}
+      <FadeInUp delay={0.2}>
       <div
         role="tablist"
         aria-label="Menu categories"
@@ -410,6 +413,7 @@ export function Menu() {
           </button>
         ))}
       </div>
+      </FadeInUp>
 
       {/* ── Tab panels — cross-fade on switch ─────────────────── */}
       <AnimatePresence mode="wait">
@@ -422,7 +426,7 @@ export function Menu() {
           transition={{ duration: 0.3 }}
           style={{ marginTop: "48px" }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 md:px-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {CATEGORIES[activeTab].items.map((item, i) => (
               <MenuCard key={item.english} item={item} index={i} />
             ))}

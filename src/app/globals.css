@@ -97,6 +97,30 @@
   --z-modal:    400;
 }
 
+/* ─── Selection ──────────────────────────────────────────────── */
+::selection {
+  background: rgba(200, 169, 110, 0.3);
+  color: var(--color-foreground);
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+}
+
 /* ─── Base Reset ─────────────────────────────────────────────── */
 *,
 *::before,

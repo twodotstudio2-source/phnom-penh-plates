@@ -29,7 +29,7 @@ export function About() {
        * image naturally stacks below the text.
        * px-6 md:px-0 = 24px horizontal padding on mobile only.
        */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center px-6 md:px-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
 
         {/* ── Text column ───────────────────────────────────────── */}
         <div>
@@ -51,7 +51,7 @@ export function About() {
           </FadeInUp>
 
           {/* Headline */}
-          <FadeInUp delay={0.15}>
+          <FadeInUp delay={0.1}>
             <h2
               style={{
                 fontFamily: "var(--font-display)",
@@ -67,7 +67,7 @@ export function About() {
           </FadeInUp>
 
           {/* Gold rule */}
-          <FadeInUp delay={0.25}>
+          <FadeInUp delay={0.2}>
             <div
               style={{
                 width:      "48px",
@@ -79,7 +79,7 @@ export function About() {
           </FadeInUp>
 
           {/* Pull quote */}
-          <FadeInUp delay={0.35}>
+          <FadeInUp delay={0.3}>
             <blockquote
               style={{
                 fontFamily: "var(--font-display)",
@@ -97,7 +97,7 @@ export function About() {
           </FadeInUp>
 
           {/* Body copy */}
-          <FadeInUp delay={0.45}>
+          <FadeInUp delay={0.4}>
             <p
               style={{
                 fontFamily: "var(--font-body)",
@@ -114,7 +114,7 @@ export function About() {
           </FadeInUp>
 
           {/* Stats */}
-          <FadeInUp delay={0.55}>
+          <FadeInUp delay={0.5}>
             <div
               style={{
                 display:   "flex",
@@ -158,7 +158,7 @@ export function About() {
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
           {/*
            * Outer wrapper adds right + bottom space so the
