@@ -227,7 +227,7 @@ function MenuCard({ item, index }: { item: MenuItem; index: number }) {
       >
         <CardImage />
 
-        <div style={{ padding: "20px" }}>
+        <div className="menu-card-body" style={{ padding: "20px" }}>
           {/* Khmer script name */}
           <p
             style={{
@@ -294,9 +294,25 @@ export function Menu() {
 
   return (
     <SectionWrapper id="menu" dark>
+      <style>{`
+        @media (max-width: 767px) {
+          .menu-tab-list {
+            justify-content: flex-start !important;
+            padding-left: 24px;
+            padding-right: 24px;
+            -webkit-overflow-scrolling: touch;
+          }
+          .menu-tab-list::-webkit-scrollbar {
+            display: none;
+          }
+          .menu-card-body {
+            padding: 16px !important;
+          }
+        }
+      `}</style>
 
       {/* ── Section heading ────────────────────────────────────── */}
-      <div style={{ textAlign: "center" }}>
+      <div className="px-6 md:px-0" style={{ textAlign: "center" }}>
         <p
           style={{
             fontFamily:    "var(--font-body)",
@@ -333,6 +349,7 @@ export function Menu() {
       <div
         role="tablist"
         aria-label="Menu categories"
+        className="menu-tab-list"
         style={{
           display:        "flex",
           justifyContent: "center",
@@ -405,7 +422,7 @@ export function Menu() {
           transition={{ duration: 0.3 }}
           style={{ marginTop: "48px" }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 md:px-0">
             {CATEGORIES[activeTab].items.map((item, i) => (
               <MenuCard key={item.english} item={item} index={i} />
             ))}

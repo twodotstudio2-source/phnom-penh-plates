@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -77,6 +77,22 @@ export function Gallery() {
 
   return (
     <SectionWrapper id="gallery">
+      <style>{`
+        @media (max-width: 767px) {
+          .gallery-grid {
+            column-gap: 8px !important;
+          }
+          .gallery-item {
+            height: auto !important;
+            aspect-ratio: 4 / 3;
+            margin-bottom: 8px !important;
+          }
+          .gallery-item .h-full {
+            height: 100%;
+          }
+        }
+      `}</style>
+      <div className="px-6 md:px-0">
       {/* Heading */}
       <div style={{ textAlign: "center", marginBottom: "var(--space-12)" }}>
         <FadeInUp>
@@ -110,10 +126,11 @@ export function Gallery() {
       </div>
 
       {/* Masonry grid */}
-      <div className="columns-2 md:columns-3" style={{ columnGap: "16px" }}>
+      <div className="columns-2 md:columns-3 gallery-grid" style={{ columnGap: "16px" }}>
         {IMAGES.map((img, i) => (
           <div
             key={i}
+            className="gallery-item"
             onClick={() => setSelectedIndex(i)}
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
@@ -144,6 +161,7 @@ export function Gallery() {
           </div>
         ))}
       </div>
+      </div>{/* end px-6 md:px-0 wrapper */}
 
       {/* Lightbox */}
       <AnimatePresence>

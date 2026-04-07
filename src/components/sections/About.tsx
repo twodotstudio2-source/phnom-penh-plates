@@ -12,12 +12,24 @@ const STATS = [
 export function About() {
   return (
     <SectionWrapper id="about">
+      <style>{`
+        @media (max-width: 767px) {
+          .about-image-outer {
+            padding-right: 0 !important;
+            padding-bottom: 0 !important;
+          }
+          .about-image-inner {
+            box-shadow: none !important;
+          }
+        }
+      `}</style>
       {/*
-       * gap-12 = 48px (mobile) · gap-20 = 80px (desktop)
+       * gap-10 = 40px (mobile) · gap-20 = 80px (desktop)
        * DOM order: text first → image second, so on mobile the
        * image naturally stacks below the text.
+       * px-6 md:px-0 = 24px horizontal padding on mobile only.
        */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center px-6 md:px-0">
 
         {/* ── Text column ───────────────────────────────────────── */}
         <div>
@@ -154,8 +166,9 @@ export function About() {
            * box-shadow on an overflow:hidden element is NOT
            * clipped — it renders correctly alongside fill images.
            */}
-          <div style={{ paddingRight: "12px", paddingBottom: "12px" }}>
+          <div className="about-image-outer" style={{ paddingRight: "12px", paddingBottom: "12px" }}>
             <div
+              className="about-image-inner"
               style={{
                 position:    "relative",
                 aspectRatio: "4 / 5",
